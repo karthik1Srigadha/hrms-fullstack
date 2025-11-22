@@ -13,10 +13,7 @@ const logRoutes = require("./routes/logs");
 const app = express();
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "hrms-fullstack-zo1d.vercel.app",  // <-- your frontend vercel url
-    ],
+    origin: "*",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true,
