@@ -100,3 +100,41 @@
   font-size: 14px;
   font-weight: bold;
 }
+/* ------------------------------ */
+/* 🌞 LIGHT MODE FIXES            */
+/* ------------------------------ */
+@media (prefers-color-scheme: light) {
+
+  .dashboard-page {
+    background: #f8fafc;
+    color: #111827;
+  }
+
+  .dashboard-header h1 {
+    color: #1e293b;
+  }
+
+  .dashboard-card {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e5e7eb;
+  }
+
+  .dashboard-card:hover {
+    background: #f1f5f9;
+  }
+
+  .count-badge {
+    background: #2563eb;
+    color: white;
+  }
+
+  .logout-btn {
+    background: #ef4444;
+    color: #fff;
+  }
+
+  .logout-btn:hover {
+    background: #dc2626;
+  }
+}
