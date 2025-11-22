@@ -4,26 +4,44 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
-const config = require("../../config/config.json")[env];
 
 let sequelize;
 
-// Initialize Sequelize instance
-sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  {
-    host: config.host,
-    dialect: config.dialect,
+// ⭐ Use Render DATABASE_URL in production
+if (process.env.NODE_ENV === "production") {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: "postgres",
+    protocol: "postgres",
     logging: false,
-  }
-);
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  });
+  console.log("🔗 Connected using Render DATABASE_URL");
+} else {
+  // ⭐ Local development (using config.json)
+  const env = "development";
+  const config = require("../../config/config.json")[env];
+
+  sequelize = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
+    {
+      host: config.host,
+      dialect: config.dialect,
+      logging: false,
+    }
+  );
+  console.log("🔗 Connected using LOCAL config.json");
+}
 
 const db = {};
 
-// Auto-load all models in this folder
+// Automatically load all models
 fs.readdirSync(__dirname)
   .filter(
     (file) =>
@@ -39,14 +57,13 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
-// Run associations if models export associate()
+// Run model associations
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
 
-// Export Sequelize instance + all models
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

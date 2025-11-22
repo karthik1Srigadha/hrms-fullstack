@@ -25,7 +25,7 @@ async function register(req, res) {
       organisationId: organisation.id, // camelCase FK
     });
 
-    const token = jwt.sign({ userId: user.id, orgId: organisation.id }, process.env.JWT_SECRET, { expiresIn: '8h' });
+    const token = jwt.sign({ userId: user.id, orgId: organisation.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
     await createLog({
       organisationId: organisation.id,
@@ -60,7 +60,7 @@ async function login(req, res) {
     const isValid = await bcrypt.compare(password, user.passwordHash);
     if (!isValid) return res.status(400).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ userId: user.id, orgId: user.organisationId }, process.env.JWT_SECRET, { expiresIn: '8h' });
+    const token = jwt.sign({ userId: user.id, orgId: user.organisationId }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
     await createLog({
       organisationId: user.organisationId,
