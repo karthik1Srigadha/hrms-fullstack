@@ -135,7 +135,7 @@ export default function Employees() {
             {employees.map((emp) => (
               <tr key={emp.id}>
                 <td data-label="Name">{emp.firstName} {emp.lastName}</td>
-                <td data-label="Email">{emp.email}</td>
+                <td data-label="Email: ">{emp.email}</td>
                 <td data-label="Teams">{emp.teams?.length? emp.teams.map(t => (<span key={t.id} className="team-badge">{t.name}</span>)): "—"}</td>
                 <td data-label="Actions">
                   <div className="action-buttons">
