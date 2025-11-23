@@ -138,7 +138,7 @@ export default function Employees() {
                   {emp.firstName} {emp.lastName}</td>
                 <td data-label="Email">{emp.email}</td>
                 <td data-label="Teams">{emp.teams?.length? emp.teams.map(t => (<span key={t.id} className="team-badge">{t.name}</span>)): "—"}</td>
-                <td data-label="Actions">
+                <td>
                   <div className="action-buttons">
                     <button className="action-btn edit" onClick={() => startEdit(emp)}>
                       Edit
