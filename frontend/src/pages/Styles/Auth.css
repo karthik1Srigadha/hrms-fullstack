@@ -441,3 +441,141 @@
     color: #c7d2fe !important;
   }
 }
+/* =======================================================
+   MOBILE RESPONSIVE FIXES ONLY FOR EMPLOYEES + TEAMS PAGE
+   (Nothing else changes in your project)
+======================================================= */
+
+/* Mobile & small tablet screens */
+@media (max-width: 768px) {
+
+  /* Page layout */
+  .page {
+    padding: 15px;
+  }
+
+  .page h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  /* Form section */
+  .form-section {
+    padding: 18px;
+  }
+
+  .form-section h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  /* Inputs stacked properly */
+  .entity-form {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .entity-form input {
+    width: 100% !important;
+  }
+
+  .entity-form button {
+    width: 100% !important;
+    font-size: 15px;
+  }
+
+  /* ----- TABLE → CARD LAYOUT ----- */
+
+  .list-table {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .list-table thead {
+    display: none;
+  }
+
+  .list-table tr {
+    display: block;
+    background: #ffffff;
+    margin-bottom: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .list-table tr {
+      background: #1e1e1e !important;
+    }
+  }
+
+  .list-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 4px;
+    border: none !important;
+    font-size: 14px;
+  }
+
+  .list-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #475569;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .list-table td::before {
+      color: #cbd5e1;
+    }
+  }
+
+  /* Team badges adjust */
+  .team-badge {
+    margin-top: 5px;
+    display: inline-block;
+  }
+
+  /* Action buttons stacked neatly */
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px !important;
+  }
+
+  .action-buttons button {
+    flex: 1 1 45%;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  /* Modal responsive */
+  .enhanced-modal {
+    width: 90% !important;
+    padding: 20px !important;
+  }
+
+  .modal-body {
+    max-height: 220px !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+
+  .page h2 {
+    font-size: 20px;
+  }
+
+  .entity-form input,
+  .entity-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .action-buttons button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}
