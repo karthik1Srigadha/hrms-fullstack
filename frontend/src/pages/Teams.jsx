@@ -146,8 +146,8 @@ export default function Teams() {
           <tbody>
             {teams.map((t) => (
               <tr key={t.id}>
-                <td data-label="Name">{t.name}</td>
-                <td data-label="Members">{t.memberCount}</td>
+                <td>{t.name}</td>
+                <td>{t.memberCount}</td>
                 <td>
                   <div className="action-buttons">
                     <button className="action-btn edit" onClick={() => startEdit(t)}>
