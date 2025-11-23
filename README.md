@@ -160,7 +160,7 @@ npm install
 
 Create .env:
 
-REACT_APP_API_URL=https://your-backend-url.onrender.com
+REACT_APP_API_URL=https://hrms-fullstack-1.onrender.com
 
 
 Run frontend:
