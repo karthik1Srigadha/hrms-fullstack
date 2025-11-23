@@ -441,3 +441,140 @@
     color: #c7d2fe !important;
   }
 }
+/* ----------------------------------------------------
+   RESPONSIVE STYLES (Phone + Tablet)
+----------------------------------------------------- */
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .page {
+    padding: 20px;
+  }
+
+  .entity-form {
+    flex-wrap: wrap;
+  }
+
+  .entity-form input {
+    flex: 1 1 45%;
+  }
+}
+
+/* Mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+
+  /* Page padding */
+  .page {
+    padding: 15px;
+  }
+
+  /* Headings */
+  .page h2 {
+    font-size: 22px;
+  }
+
+  .form-section h3 {
+    font-size: 18px;
+  }
+
+  /* Form fields stack */
+  .entity-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .entity-form input {
+    width: 100%;
+  }
+
+  .entity-form button {
+    width: 100%;
+  }
+
+  /* Table converts into card layout */
+  .list-table,
+  .list-table thead {
+    display: none;
+  }
+
+  .list-table tr {
+    display: block;
+    background: #fff;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .list-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border: none;
+  }
+
+  .list-table td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #475569;
+  }
+
+  /* Action buttons layout */
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .action-buttons button {
+    flex: 1 1 auto;
+  }
+
+  /* Team badges */
+  .team-badge {
+    display: inline-block;
+    margin: 2px 0;
+  }
+
+  /* Modal adjusts to screen */
+  .enhanced-modal {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .modal-body {
+    max-height: 250px;
+  }
+}
+
+/* Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+
+  .page {
+    padding: 12px;
+  }
+
+  .page h2 {
+    font-size: 20px;
+  }
+
+  .entity-form input,
+  .entity-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .team-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .action-buttons button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .enhanced-modal {
+    padding: 15px;
+  }
+}

@@ -58,5 +58,7 @@
 }
 ],
 "variable": [
-{"key":"baseUrl","value":"http://localhost:5000/api"},]
+{"key":"baseUrl","value":"http://localhost:5000/api"},
+{"key":"token","value":""}
+]
 }

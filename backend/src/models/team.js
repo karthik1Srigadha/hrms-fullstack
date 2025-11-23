@@ -13,6 +13,5 @@ module.exports = (sequelize, DataTypes) => {
   as: "members"
 });
   };
-
   return Team;
 };

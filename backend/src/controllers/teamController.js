@@ -119,12 +119,14 @@ async function deleteTeam(req, res) {
  */
 async function assignEmployees(req, res) {
   const transaction = await sequelize.transaction();
+
   try {
     const organisationId = req.user.organisationId;
     const userId = req.user.id;
     const { teamId } = req.params;
     const { employeeIds } = req.body;
 
+    // Validate team belongs to org
     const team = await Team.findOne({
       where: { id: teamId, organisationId },
       transaction
@@ -132,9 +134,10 @@ async function assignEmployees(req, res) {
 
     if (!team) {
       await transaction.rollback();
-      return res.status(404).json({ message: 'Team not found' });
+      return res.status(404).json({ message: "Team not found" });
     }
 
+    // Validate employees belong to this org
     const employees = await Employee.findAll({
       where: { id: employeeIds, organisationId },
       transaction
@@ -142,29 +145,39 @@ async function assignEmployees(req, res) {
 
     const validIds = employees.map(e => e.id);
 
-    // Remove old assignments
-    await EmployeeTeam.destroy({ where: { teamId }, transaction });
+    // Remove ALL old assignments
+    await EmployeeTeam.destroy({
+      where: { teamId },
+      transaction
+    });
 
     // Insert new assignments
-    const rows = validIds.map(empId => ({ employeeId: empId, teamId }));
-    await EmployeeTeam.bulkCreate(rows, { transaction });
+    const rows = validIds.map(empId => ({
+      employeeId: empId,
+      teamId
+    }));
+
+    if (rows.length) {
+      await EmployeeTeam.bulkCreate(rows, { transaction });
+    }
 
     await createLog({
       organisationId,
       userId,
-      action: 'team_assignment_updated',
-      meta: { teamId, employeeIds: validIds },
+      action: "team_assignment_updated",
+      meta: { teamId, employeeIds: validIds }
     });
 
     await transaction.commit();
-    res.json({ message: 'Assignments updated', assigned: validIds });
+    return res.json({ message: "Assignments updated", assigned: validIds });
 
   } catch (err) {
     await transaction.rollback();
-    console.error('assignEmployees error:', err);
-    res.status(500).json({ message: 'Server error' });
+    console.error("assignEmployees error:", err);
+    return res.status(500).json({ message: "Server error" });
   }
 }
+
 
 
 module.exports = {

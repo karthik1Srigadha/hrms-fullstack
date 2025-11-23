@@ -16,6 +16,8 @@ router.get('/', listTeams);
 router.post('/', createTeam);
 router.put('/:id', updateTeam);
 router.delete('/:id', deleteTeam);
+
+// assign employees
 router.post('/:teamId/assign', assignEmployees);
 
 module.exports = router;

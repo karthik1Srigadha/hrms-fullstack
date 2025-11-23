@@ -146,9 +146,9 @@ export default function Teams() {
           <tbody>
             {teams.map((t) => (
               <tr key={t.id}>
-                <td>{t.name}</td>
-                <td>{t.memberCount}</td>
-                <td>
+                <td data-label="Name">{t.name}</td>
+                <td data-label="Members">{t.memberCount}</td>
+                <td data-label="Actions">
                   <div className="action-buttons">
                     <button className="action-btn edit" onClick={() => startEdit(t)}>
                       Edit
@@ -177,7 +177,7 @@ export default function Teams() {
 
       {selectedTeam && (
         <div className="modal-backdrop">
-  <div className="modal enhanced-modal">
+   <div className="modal enhanced-modal">
     <h3 className="modal-title">Assign Employees to {selectedTeam.name}</h3>
 
     <div className="modal-body">
