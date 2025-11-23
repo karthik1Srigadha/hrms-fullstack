@@ -153,17 +153,16 @@ export default function Teams() {
                     <button className="action-btn edit" onClick={() => startEdit(t)}>
                       Edit
                     </button>
-
                     <button className="action-btn delete" onClick={() => handleDelete(t.id)}>
                       Delete
                     </button>
-
                     <button className="action-btn assign" onClick={() => openAssign(t)}>
                       Assign
                     </button>
                   </div>
                 </td>
               </tr>
+
             ))}
 
             {!teams.length && (
